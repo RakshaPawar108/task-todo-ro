@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Beau+Rivage&display=swap");
+
+.header {
+  background-color: var(--light-purple);
+  color: var(--secondary-color);
+  padding: 1rem 3rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.active {
+  background-color: var(--light-purple);
+  border-bottom: 5px solid var(--dark-blue);
+}
+
+.navigation-brand {
+  padding: 1rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.navigation-items {
+  color: var(--secondary-color);
+  display: flex;
+  margin: auto 0;
+}
+
+.navigation-items .navigation-item {
+  margin: 0 2px;
+  display: flex;
+}
+
+.navigation-items .navigation-item a:hover {
+  color: var(--dark-blue);
+}
+
+.navigation-item a {
+  color: var(--white);
+  font-size: 2rem;
+  padding: 5px 10px;
+}
+
+.header .bar {
+  position: relative;
+  margin: auto;
+  display: none;
+}
+
+.header .bar span {
+  position: absolute;
+  color: #fff;
+  font-size: 35px;
+}
+
+#check {
+  -webkit-appearance: none;
+  display: none;
+}
+
+@media screen and (max-width: 1200px) {
+  .header {
+    display: block;
+    padding: 0;
+  }
+
+  .navigation-brand {
+    display: inline-block;
+    padding: 1.5rem 2rem;
+  }
+
+  .navigation-items {
+    display: flex;
+    flex-direction: column;
+    height: 0;
+    visibility: hidden;
+  }
+
+  .navigation-item {
+    text-align: center;
+    opacity: 1;
+  }
+
+  .navigation-item {
+    display: block;
+  }
+
+  .header .bar {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 80px;
+    cursor: pointer;
+  }
+
+  .header .bar .navbar-close-btn {
+    display: none;
+  }
+
+  #check:checked ~ .header .bar .navbar-close-btn {
+    display: block;
+  }
+  #check:checked ~ .header .bar .navbar-open-btn {
+    display: none;
+  }
+  #check:checked ~ .header .navigation-items {
+    visibility: visible;
+    height: 46.5rem;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+  }
+
+  #check:checked ~ .navigation-item {
+    opacity: 0;
+  }
+}

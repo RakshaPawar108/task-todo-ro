@@ -16,7 +16,7 @@
   border-bottom: 5px solid var(--dark-blue);
 }
 
-.navigation-brand a {
+.navigation-brand {
   padding: 1rem;
   font-size: 2.5rem;
   font-weight: 600;
@@ -84,7 +84,7 @@
     opacity: 1;
   }
 
-  .navigation-item a {
+  .navigation-item {
     display: block;
   }
 

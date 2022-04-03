@@ -9,8 +9,9 @@ export const Footer = () => {
       </div>
       <div className="footer-contents">
         <ul className="footer-social-links">
-          <li>
+          <li className="social-link-item">
             <a
+              className="social-link"
               href="https://twitter.com/rakshapawar108"
               target="_blank"
               rel="noreferrer"
@@ -18,8 +19,9 @@ export const Footer = () => {
               <i className="fab fa-twitter" title="Twitter"></i>Twitter
             </a>
           </li>
-          <li>
+          <li className="social-link-item">
             <a
+              className="social-link"
               href="https://github.com/RakshaPawar108"
               target="_blank"
               rel="noreferrer"
@@ -28,8 +30,9 @@ export const Footer = () => {
             </a>
           </li>
 
-          <li>
+          <li className="social-link-item">
             <a
+              className="social-link"
               href="https://www.linkedin.com/in/rakshapawar/"
               target="_blank"
               rel="noreferrer"

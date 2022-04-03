@@ -33,13 +33,13 @@
   align-items: center;
   justify-content: center;
 }
-.footer-social-links li {
+.footer-social-links .social-link-item {
   display: inline-block;
 }
-.footer-social-links li:hover {
+.footer-social-links .social-link-item:hover {
   color: var(--dark-blue);
 }
-.footer-social-links a,
+.footer-social-links .social-link,
 .footer-social-links i {
   flex-shrink: 0;
   font-size: 1.5rem;

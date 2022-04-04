@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { TaskBanner, TaskModal } from "../../components";
+import { TaskBanner, TaskModal, TodoCard } from "../../components";
 import "./Tasks.css";
 export const Tasks = () => {
   const [openTaskModal, setOpenTaskModal] = useState(false);
@@ -42,13 +42,12 @@ export const Tasks = () => {
         <TaskModal modalOpen={setOpenTaskModal} saveToList={saveToList} />
       )}
 
-      {todoList &&
-        todoList.map(({ id, name, description }) => (
-          <div key={id}>
-            Task Name: {name}
-            Task Description: {description}
-          </div>
-        ))}
+      <div className="todos-wrapper">
+        <>
+          {todoList &&
+            todoList.map((todo) => <TodoCard key={todo.id} {...todo} />)}
+        </>
+      </div>
     </div>
   );
 };

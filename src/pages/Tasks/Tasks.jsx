@@ -22,6 +22,14 @@ export const Tasks = () => {
     return list;
   };
 
+  const deleteTodo = (taskIndex) => {
+    let list = todoList;
+    list.splice(taskIndex, 1);
+    saveToLocalStorage(list);
+    setTodoList(list);
+    window.location.reload();
+  };
+
   useEffect(() => {
     const savedTaskList = getListFromLocalStorage();
     if (savedTaskList) {
@@ -45,7 +53,14 @@ export const Tasks = () => {
       <div className="todos-wrapper">
         <>
           {todoList &&
-            todoList.map((todo) => <TodoCard key={todo.id} {...todo} />)}
+            todoList.map((todo, index) => (
+              <TodoCard
+                key={todo.id}
+                {...todo}
+                deleteTodo={deleteTodo}
+                index={index}
+              />
+            ))}
         </>
       </div>
     </div>

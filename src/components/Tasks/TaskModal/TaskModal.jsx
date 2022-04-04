@@ -1,5 +1,21 @@
+import { useState } from "react";
+import { v4 as uuid } from "uuid";
 import "./TaskModal.css";
-export const TaskModal = ({ modalOpen }) => {
+
+export const TaskModal = ({ modalOpen, saveToList }) => {
+  const [taskName, setTaskName] = useState("");
+  const [taskDescription, setTaskDescription] = useState("");
+
+  const appendTaskToList = () => {
+    const task = {
+      id: uuid(),
+      name: taskName,
+      description: taskDescription,
+    };
+
+    saveToList(task);
+  };
+
   return (
     <div className="modal-wrapper">
       <div className="modal">
@@ -12,11 +28,22 @@ export const TaskModal = ({ modalOpen }) => {
         </header>
         <div className="modal-body">
           <div className="input-container outlined">
-            <input id="task-name" type="text" placeholder=" " />
+            <input
+              id="task-name"
+              type="text"
+              placeholder=" "
+              value={taskName}
+              onChange={(e) => setTaskName(e.target.value)}
+            />
             <label htmlFor="task-name">Task Name</label>
           </div>
           <div className="input-container outlined">
-            <textarea id="task-description" placeholder=" " />
+            <textarea
+              id="task-description"
+              placeholder=" "
+              value={taskDescription}
+              onChange={(e) => setTaskDescription(e.target.value)}
+            />
             <label htmlFor="task-description">Task Description</label>
           </div>
         </div>
@@ -27,7 +54,10 @@ export const TaskModal = ({ modalOpen }) => {
           >
             Cancel
           </button>
-          <button className="button btn-secondary btn-add-task">
+          <button
+            onClick={appendTaskToList}
+            className="button btn-secondary btn-add-task"
+          >
             Add Task
           </button>
         </footer>

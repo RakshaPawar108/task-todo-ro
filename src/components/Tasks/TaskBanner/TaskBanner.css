@@ -1,0 +1,16 @@
+.task-banner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 2rem;
+}
+
+.task-banner-container > .card-basic {
+  width: 40%;
+  padding: 1rem;
+}
+
+.content-container h1 {
+  font-size: 2.5rem;
+}

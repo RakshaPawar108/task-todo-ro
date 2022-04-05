@@ -1,8 +1,53 @@
-import { useState } from "react";
-import { TaskBanner, TaskModal } from "../../components";
+import { useEffect, useState } from "react";
+import { TaskBanner, TaskModal, TodoCard } from "../../components";
 import "./Tasks.css";
 export const Tasks = () => {
   const [openTaskModal, setOpenTaskModal] = useState(false);
+  const [todoList, setTodoList] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editingTodo, setEditingTodo] = useState({});
+
+  const saveToList = (task) => {
+    setTodoList([...todoList, task]);
+    localStorage.setItem("todoList", JSON.stringify([...todoList, task]));
+    setOpenTaskModal(false);
+  };
+
+  const getListFromLocalStorage = () => {
+    const list = JSON.parse(localStorage.getItem("todoList"));
+    return list;
+  };
+
+  const deleteTodo = (taskId) => {
+    const list = todoList.filter((todo) => todo.id !== taskId);
+    localStorage.setItem("todoList", JSON.stringify(list));
+    setTodoList(list);
+  };
+
+  const editTodo = (id) => {
+    setIsEditing(true);
+    setOpenTaskModal(true);
+    const currentTodo = todoList.find((todo) => todo.id === id);
+    setEditingTodo(currentTodo);
+  };
+
+  const updateTask = ({ id, name, description }) => {
+    const newTodo = todoList.map((todo) =>
+      todo.id === id ? { ...todo, name: name, description: description } : todo
+    );
+    setTodoList(newTodo);
+    localStorage.setItem("todoList", JSON.stringify(newTodo));
+    setIsEditing(false);
+    setOpenTaskModal(false);
+  };
+
+  useEffect(() => {
+    const savedTaskList = getListFromLocalStorage();
+    if (savedTaskList) {
+      setTodoList(savedTaskList);
+    }
+  }, []);
+
   return (
     <div className="tasks-wrapper">
       <TaskBanner />
@@ -12,7 +57,32 @@ export const Tasks = () => {
       >
         <i className="fas fa-plus"></i> Create Task
       </button>
-      {openTaskModal && <TaskModal modalOpen={setOpenTaskModal} />}
+      {openTaskModal && (
+        <TaskModal
+          modalOpen={setOpenTaskModal}
+          saveToList={saveToList}
+          editingState={isEditing}
+          setEditingState={setIsEditing}
+          editingTodo={editingTodo}
+          setEditingTodo={setEditingTodo}
+          updateTask={updateTask}
+        />
+      )}
+
+      <div className="todos-wrapper">
+        <>
+          {todoList &&
+            todoList.map((todo, index) => (
+              <TodoCard
+                key={todo.id}
+                {...todo}
+                deleteTodo={deleteTodo}
+                index={index}
+                editTodo={editTodo}
+              />
+            ))}
+        </>
+      </div>
     </div>
   );
 };

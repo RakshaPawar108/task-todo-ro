@@ -1,0 +1,45 @@
+.todo-card {
+  background-color: var(--light-purple);
+}
+
+.todo-card:hover {
+  cursor: pointer;
+}
+
+.action-items-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  align-self: center;
+}
+
+.content-container .task-heading {
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 1rem;
+  color: var(--secondary-color);
+}
+
+.content-container .task-description {
+  color: var(--secondary-color);
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+
+.edit-btn {
+  background-color: var(--orange);
+}
+
+.delete-btn {
+  background-color: var(--red);
+}
+
+.edit-btn i,
+.delete-btn i {
+  font-size: 1.5rem;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+  background-color: var(--dark-blue);
+}

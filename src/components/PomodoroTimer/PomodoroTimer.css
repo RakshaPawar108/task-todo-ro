@@ -1,0 +1,52 @@
+.timer-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  margin: 1rem;
+}
+
+.timer-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer-display-content {
+  font-size: 2.5rem;
+  color: var(--purple);
+}
+
+.play-btn,
+.pause-btn {
+  height: 5rem;
+  width: 5rem;
+  background-color: var(--purple);
+  color: var(--yellow);
+}
+
+.play-btn:disabled,
+.pause-btn:disabled {
+  background-color: var(--dark-gray);
+  pointer-events: none;
+  color: var(--secondary-color);
+}
+
+.play-btn:hover,
+.pause-btn:hover,
+.reset-btn:hover {
+  background-color: var(--dark-blue);
+}
+
+.play-btn i,
+.pause-btn i,
+.reset-btn i {
+  font-size: 2rem;
+}
+
+.reset-btn {
+  font-size: 1.5rem;
+  font-weight: bold;
+  background-color: var(--purple);
+  color: var(--yellow);
+}

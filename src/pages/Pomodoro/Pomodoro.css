@@ -11,4 +11,24 @@
 .col-2 {
   background-color: var(--secondary-color);
   color: var(--dark-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.task-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.task-title {
+  font-size: 3rem;
+  padding: 1.5rem;
+  margin: 1.5rem;
+}
+
+.task-description {
+  font-size: 2rem;
 }

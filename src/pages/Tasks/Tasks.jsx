@@ -31,9 +31,11 @@ export const Tasks = () => {
     setEditingTodo(currentTodo);
   };
 
-  const updateTask = ({ id, name, description }) => {
+  const updateTask = ({ id, name, description, timer }) => {
     const newTodo = todoList.map((todo) =>
-      todo.id === id ? { ...todo, name: name, description: description } : todo
+      todo.id === id
+        ? { ...todo, name: name, description: description, timer: timer }
+        : todo
     );
     setTodoList(newTodo);
     localStorage.setItem("todoList", JSON.stringify(newTodo));

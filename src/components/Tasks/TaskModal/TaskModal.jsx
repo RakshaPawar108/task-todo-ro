@@ -13,12 +13,14 @@ export const TaskModal = ({
 }) => {
   const [taskName, setTaskName] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
+  const [taskTime, setTaskTime] = useState(0);
 
   const appendTaskToList = () => {
     const task = {
       id: uuid(),
       name: taskName,
       description: taskDescription,
+      timer: taskTime,
     };
 
     saveToList(task);
@@ -94,6 +96,33 @@ export const TaskModal = ({
                   onChange={(e) => setTaskDescription(e.target.value)}
                 />
                 <label htmlFor="task-description">Task Description</label>
+              </>
+            )}
+          </div>
+          <div className="input-container outlined">
+            {editingState ? (
+              <>
+                <input
+                  id="task-time"
+                  type="number"
+                  placeholder=" "
+                  value={editingTodo.timer}
+                  onChange={(e) => {
+                    setEditingTodo({ ...editingTodo, timer: e.target.value });
+                  }}
+                />
+                <label htmlFor="task-time">Task Time (in Minutes)</label>
+              </>
+            ) : (
+              <>
+                <input
+                  id="task-time"
+                  type="number"
+                  placeholder=" "
+                  value={taskTime}
+                  onChange={(e) => setTaskTime(e.target.value)}
+                />
+                <label htmlFor="task-time">Task Time (in Minutes)</label>
               </>
             )}
           </div>

@@ -10,7 +10,6 @@
 .col-1,
 .col-2 {
   background-color: var(--secondary-color);
-  color: var(--dark-blue);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,8 +26,12 @@
   font-size: 3rem;
   padding: 1.5rem;
   margin: 1.5rem;
+  color: var(--purple);
 }
 
 .task-description {
   font-size: 2rem;
+  color: var(--dark-blue);
+  padding: 1.5rem;
+  margin: 1rem;
 }

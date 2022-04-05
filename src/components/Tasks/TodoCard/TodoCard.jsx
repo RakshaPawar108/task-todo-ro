@@ -1,6 +1,13 @@
 import "./TodoCard.css";
 
-export const TodoCard = ({ id, name, description, deleteTodo, index }) => {
+export const TodoCard = ({
+  id,
+  name,
+  description,
+  deleteTodo,
+  index,
+  editTodo,
+}) => {
   return (
     <div className="card card-basic todo-card">
       <div className="content-container">
@@ -8,11 +15,14 @@ export const TodoCard = ({ id, name, description, deleteTodo, index }) => {
         <p className="task-description">{description}</p>
       </div>
       <div className="action-items-container">
-        <button className="button btn-secondary btn-float edit-btn">
+        <button
+          onClick={() => editTodo(id)}
+          className="button btn-secondary btn-float edit-btn"
+        >
           <i className="fas fa-pencil-alt"></i>
         </button>
         <button
-          onClick={() => deleteTodo(index)}
+          onClick={() => deleteTodo(id)}
           className="button btn-secondary btn-float delete-btn"
         >
           <i className="fas fa-trash-alt"></i>

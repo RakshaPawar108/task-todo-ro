@@ -4,17 +4,13 @@ import "./Tasks.css";
 export const Tasks = () => {
   const [openTaskModal, setOpenTaskModal] = useState(false);
   const [todoList, setTodoList] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editingTodo, setEditingTodo] = useState({});
 
   const saveToList = (task) => {
-    let list = todoList;
-    list.push(task);
-    saveToLocalStorage(list);
-    setTodoList(list);
+    setTodoList([...todoList, task]);
+    localStorage.setItem("todoList", JSON.stringify([...todoList, task]));
     setOpenTaskModal(false);
-  };
-
-  const saveToLocalStorage = (taskList) => {
-    localStorage.setItem("todoList", JSON.stringify(taskList));
   };
 
   const getListFromLocalStorage = () => {
@@ -22,12 +18,27 @@ export const Tasks = () => {
     return list;
   };
 
-  const deleteTodo = (taskIndex) => {
-    let list = todoList;
-    list.splice(taskIndex, 1);
-    saveToLocalStorage(list);
+  const deleteTodo = (taskId) => {
+    const list = todoList.filter((todo) => todo.id !== taskId);
+    localStorage.setItem("todoList", JSON.stringify(list));
     setTodoList(list);
-    window.location.reload();
+  };
+
+  const editTodo = (id) => {
+    setIsEditing(true);
+    setOpenTaskModal(true);
+    const currentTodo = todoList.find((todo) => todo.id === id);
+    setEditingTodo(currentTodo);
+  };
+
+  const updateTask = ({ id, name, description }) => {
+    const newTodo = todoList.map((todo) =>
+      todo.id === id ? { ...todo, name: name, description: description } : todo
+    );
+    setTodoList(newTodo);
+    localStorage.setItem("todoList", JSON.stringify(newTodo));
+    setIsEditing(false);
+    setOpenTaskModal(false);
   };
 
   useEffect(() => {
@@ -47,7 +58,15 @@ export const Tasks = () => {
         <i className="fas fa-plus"></i> Create Task
       </button>
       {openTaskModal && (
-        <TaskModal modalOpen={setOpenTaskModal} saveToList={saveToList} />
+        <TaskModal
+          modalOpen={setOpenTaskModal}
+          saveToList={saveToList}
+          editingState={isEditing}
+          setEditingState={setIsEditing}
+          editingTodo={editingTodo}
+          setEditingTodo={setEditingTodo}
+          updateTask={updateTask}
+        />
       )}
 
       <div className="todos-wrapper">
@@ -59,6 +78,7 @@ export const Tasks = () => {
                 {...todo}
                 deleteTodo={deleteTodo}
                 index={index}
+                editTodo={editTodo}
               />
             ))}
         </>

@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import { Footer, Navbar } from "./components";
-import { Home, Tasks } from "./pages";
+import { Home, Pomodoro, Tasks } from "./pages";
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/tasks" element={<Tasks />} />
+        <Route path="/pomodoro" element={<Pomodoro />} />
       </Routes>
       <Footer />
     </div>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { Link } from "react-router-dom";
+import { useTitle } from "../../hooks";
 import "./PomodoroTimer.css";
 
 export const PomodoroTimer = ({ timer, breakTimer }) => {
@@ -8,6 +9,8 @@ export const PomodoroTimer = ({ timer, breakTimer }) => {
   const [key, setKey] = useState(1);
   const [isFocusTime, setFocusTime] = useState(true);
   const [isBreakTime, setBreakTime] = useState(false);
+
+  useTitle("Pomodoro Timer ⏰  | Task-ToDo-Ro");
 
   const renderTaskTimer = ({ remainingTime }) => {
     const mins = Math.floor((remainingTime % 3600) / 60);

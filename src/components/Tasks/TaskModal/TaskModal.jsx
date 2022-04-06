@@ -13,7 +13,8 @@ export const TaskModal = ({
 }) => {
   const [taskName, setTaskName] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
-  const [taskTime, setTaskTime] = useState(0);
+  const [taskTime, setTaskTime] = useState(25);
+  const [breakTime, setBreakTime] = useState(10);
 
   const appendTaskToList = () => {
     const task = {
@@ -21,6 +22,7 @@ export const TaskModal = ({
       name: taskName,
       description: taskDescription,
       timer: taskTime,
+      breakTimer: breakTime,
     };
 
     saveToList(task);
@@ -123,6 +125,36 @@ export const TaskModal = ({
                   onChange={(e) => setTaskTime(e.target.value)}
                 />
                 <label htmlFor="task-time">Task Time (in Minutes)</label>
+              </>
+            )}
+          </div>
+          <div className="input-container outlined">
+            {editingState ? (
+              <>
+                <input
+                  id="break-time"
+                  type="number"
+                  placeholder=" "
+                  value={editingTodo.breakTimer}
+                  onChange={(e) => {
+                    setEditingTodo({
+                      ...editingTodo,
+                      breakTimer: e.target.value,
+                    });
+                  }}
+                />
+                <label htmlFor="break-time">Break Time (in Minutes)</label>
+              </>
+            ) : (
+              <>
+                <input
+                  id="break-time"
+                  type="number"
+                  placeholder=" "
+                  value={breakTime}
+                  onChange={(e) => setBreakTime(e.target.value)}
+                />
+                <label htmlFor="break-time">Break Time (in Minutes)</label>
               </>
             )}
           </div>

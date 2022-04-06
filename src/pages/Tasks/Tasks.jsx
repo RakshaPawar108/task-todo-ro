@@ -31,10 +31,10 @@ export const Tasks = () => {
     setEditingTodo(currentTodo);
   };
 
-  const updateTask = ({ id, name, description, timer }) => {
+  const updateTask = ({ id, name, description, timer, breakTimer }) => {
     const newTodo = todoList.map((todo) =>
       todo.id === id
-        ? { ...todo, name: name, description: description, timer: timer }
+        ? { ...todo, name: name, description: description, timer: timer, breakTimer: breakTimer}
         : todo
     );
     setTodoList(newTodo);

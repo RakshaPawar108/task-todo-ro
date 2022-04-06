@@ -1,19 +1,27 @@
+import { Link } from "react-router-dom";
 import "./TodoCard.css";
 
 export const TodoCard = ({
   id,
   name,
   description,
+  timer,
+  breakTimer,
   deleteTodo,
-  index,
   editTodo,
 }) => {
   return (
     <div className="card card-basic todo-card">
-      <div className="content-container">
-        <h1 className="task-heading">{name}</h1>
-        <p className="task-description">{description}</p>
-      </div>
+      <Link
+        to="/pomodoro"
+        state={{ name: name, description: description, timer: timer, breakTimer: breakTimer}}
+      >
+        <div className="content-container">
+          <h1 className="task-heading">{name}</h1>
+          <p className="task-description">{description}</p>
+        </div>
+      </Link>
+
       <div className="action-items-container">
         <button
           onClick={() => editTodo(id)}

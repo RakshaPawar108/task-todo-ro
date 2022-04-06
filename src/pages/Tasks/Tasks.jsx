@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { TaskBanner, TaskModal, TodoCard } from "../../components";
+import { useTitle } from "../../hooks";
 import "./Tasks.css";
 export const Tasks = () => {
   const [openTaskModal, setOpenTaskModal] = useState(false);
@@ -31,9 +32,17 @@ export const Tasks = () => {
     setEditingTodo(currentTodo);
   };
 
-  const updateTask = ({ id, name, description }) => {
+  const updateTask = ({ id, name, description, timer, breakTimer }) => {
     const newTodo = todoList.map((todo) =>
-      todo.id === id ? { ...todo, name: name, description: description } : todo
+      todo.id === id
+        ? {
+            ...todo,
+            name: name,
+            description: description,
+            timer: timer,
+            breakTimer: breakTimer,
+          }
+        : todo
     );
     setTodoList(newTodo);
     localStorage.setItem("todoList", JSON.stringify(newTodo));
@@ -47,6 +56,8 @@ export const Tasks = () => {
       setTodoList(savedTaskList);
     }
   }, []);
+
+  useTitle("Tasks 📝 | Task-ToDo-Ro");
 
   return (
     <div className="tasks-wrapper">

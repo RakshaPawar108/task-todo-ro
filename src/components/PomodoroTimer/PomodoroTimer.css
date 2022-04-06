@@ -1,0 +1,75 @@
+.timer-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  margin: 1rem;
+}
+
+.timer-display,
+.restart-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.restart-div {
+  align-self: center;
+}
+
+.timer-display-content,
+.restart-heading {
+  font-size: 2.5rem;
+  color: var(--purple);
+}
+
+.restart-heading {
+  padding: 0.5rem;
+  margin: 1rem;
+}
+
+.timer-display-small {
+  font-size: 2rem;
+  color: var(--purple);
+}
+
+.play-btn,
+.pause-btn {
+  height: 5rem;
+  width: 5rem;
+  background-color: var(--purple);
+  color: var(--yellow);
+}
+
+.play-btn:disabled,
+.pause-btn:disabled {
+  background-color: var(--dark-gray);
+  pointer-events: none;
+  color: var(--secondary-color);
+}
+
+.play-btn:hover,
+.pause-btn:hover,
+.reset-btn:hover,
+.restart-btn:hover,
+.redirect-btn:hover {
+  background-color: var(--dark-blue);
+}
+
+.play-btn i,
+.pause-btn i,
+.reset-btn i,
+.restart-btn i,
+.redirect-btn i {
+  font-size: 2rem;
+}
+
+.reset-btn,
+.restart-btn,
+.redirect-btn {
+  font-size: 1.5rem;
+  font-weight: bold;
+  background-color: var(--purple);
+  color: var(--yellow);
+}

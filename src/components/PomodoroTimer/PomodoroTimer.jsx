@@ -95,15 +95,15 @@ export const PomodoroTimer = ({ timer, breakTimer }) => {
             className="button btn-secondary restart-btn"
             onClick={() => setFocusTime(true)}
           >
-            <i class="fas fa-redo-alt"></i> Restart Timer
+            <i className="fas fa-redo-alt"></i> Restart Timer
           </button>
 
           <h2 className="restart-heading">
             Done working on this task and want to move on to a new task?
           </h2>
-          <Link to="/tasks" className="">
+          <Link to="/tasks" className="redirect-link">
             <button className="button btn-secondary redirect-btn">
-              <i class="fas fa-tasks"></i> Go to Tasks Page
+              <i className="fas fa-tasks"></i> Go to Tasks Page
             </button>
           </Link>
         </div>

@@ -6,6 +6,7 @@ export const TodoCard = ({
   name,
   description,
   timer,
+  breakTimer,
   deleteTodo,
   editTodo,
 }) => {
@@ -13,7 +14,7 @@ export const TodoCard = ({
     <div className="card card-basic todo-card">
       <Link
         to="/pomodoro"
-        state={{ name: name, description: description, timer: timer }}
+        state={{ name: name, description: description, timer: timer, breakTimer: breakTimer}}
       >
         <div className="content-container">
           <h1 className="task-heading">{name}</h1>

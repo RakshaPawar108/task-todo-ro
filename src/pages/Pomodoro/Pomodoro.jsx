@@ -4,12 +4,13 @@ import "./Pomodoro.css";
 
 export const Pomodoro = () => {
   const location = useLocation();
-  const { name, description, timer } = location.state;
+  const { name, description, timer, breakTimer } = location.state;
+
   return (
     <div className="pomodoro-wrapper">
       <div className="grid grid-cols-2">
         <div className="col-1">
-          <PomodoroTimer timer={timer} />
+          <PomodoroTimer timer={timer} breakTimer={breakTimer} />
         </div>
         <div className="col-2">
           <div className="task-contents">

@@ -6,3 +6,66 @@
   height: 100vh;
   flex: 1;
 }
+
+.grid {
+  grid-template-areas: "hero home-content";
+}
+
+.img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.col-1 {
+  grid-area: hero;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.col-2 {
+  grid-area: home-content;
+  color: var(--purple);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing-content {
+  font-size: 2rem;
+  word-wrap: break-word;
+  max-width: 50%;
+  color: var(--default-color);
+}
+
+.landing-content strong {
+  font-weight: bold;
+  font-size: 2.5rem;
+  color: var(--purple);
+}
+
+.landing-para {
+  font-size: 1.5rem;
+  max-width: 50%;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.landing-btn {
+  background-color: var(--purple);
+  color: var(--yellow);
+  font-size: 1.5rem;
+  margin: 1.5rem;
+}
+.landing-btn:hover {
+  background-color: var(--dark-blue);
+}
+@media screen and (max-width: 1200px) {
+  .grid {
+    grid-template-areas:
+      "hero"
+      "home-content";
+  }
+}
